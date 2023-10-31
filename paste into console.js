@@ -12,6 +12,12 @@ async function extractAllData() {
                 .replace(/^,/g, '')  // Remove leading commas
                 .trim();
 
+            // If name has three or more words, grab only the first and last words
+            const nameParts = cleanedText.split(' ');
+            if (nameParts.length >= 3) {
+                cleanedText = `${nameParts[0]} ${nameParts[nameParts.length - 1]}`;
+            }
+
             if (cleanedText.split(' ').length > 1) {  // Check if more than one word is present
                 data.push(cleanedText);
             }
@@ -21,13 +27,13 @@ async function extractAllData() {
     }
 
     const allData = [];
-    for (let i = 2; i <= 30; i++) {  // Change loop conditions if more pages are added
+    for (let i = 2; i <= 30; i++) {
         allData.push(...extractDataFromPage());
 
         const nextPageButton = document.querySelector(`button[label='${i}']`);
         if (nextPageButton) {
             nextPageButton.click();
-            await new Promise(resolve => setTimeout(resolve, 1000));  // Wait 1.5 seconds for the page to load
+            await new Promise(resolve => setTimeout(resolve, 900));  // Wait 1.5 seconds for the page to load
         }
     }
 
