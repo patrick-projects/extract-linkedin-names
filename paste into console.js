@@ -33,11 +33,23 @@ async function extractAllData() {
         const nextPageButton = document.querySelector(`button[label='${i}']`);
         if (nextPageButton) {
             nextPageButton.click();
-            await new Promise(resolve => setTimeout(resolve, 900));  // Wait 1.5 seconds for the page to load
+            await new Promise(resolve => setTimeout(resolve, 1500));  // Wait 1.5 seconds for the page to load
         }
     }
 
-    console.log(allData.join('\n'));
+    // Convert array to CSV format
+    const csvData = 'Name\n' + allData.join('\n');
+
+    // Create a blob of the data
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'data.csv');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }
 
 extractAllData();
