@@ -1,4 +1,5 @@
-//Ensure you are on first page and results per page is 30
+//Run phantom buster as usual
+//Ensure you are on first page & results per page is 30
 
 async function extractAllData() {
     function extractDataFromPage() {
@@ -29,7 +30,7 @@ async function extractAllData() {
     }
 
     const allData = [];
-    for (let i = 2; i <= 30; i++) {
+    for (let i = 2; i <= 33; i++) {
         allData.push(...extractDataFromPage());
 
         const nextPageButton = document.querySelector(`button[label='${i}']`);
