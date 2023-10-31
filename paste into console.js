@@ -1,4 +1,4 @@
-# Ensure you are on first page and results per page is 30
+//Ensure you are on first page and results per page is 30
 
 async function extractAllData() {
     function extractDataFromPage() {
