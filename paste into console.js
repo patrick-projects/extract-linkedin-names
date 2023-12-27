@@ -9,7 +9,7 @@ async function extractAllData() {
         elements.forEach(element => {
             let cleanedText = element.innerText
                 .replace(/\w*\.+\w*/g, '')  // Remove any word with a period
-                .replace(/\b(CPA|CISSP|CEC|CCA|MBA|BSEE|CSCP|CSM|ITIL|CSSGB|PMP|MSBA|CSPO|ACP|CIPM|ACMA|CGMA|MAFM|MIS|CISA|CRISC|CCDP|SE|SHRM-CP)\b/g, '')  // Remove certifications
+                .replace(/\b(CPA|CISSP|CEC|CCA|MBA|BSEE|CSCP|CSM|QSA|ITIL|CSSGB|PMP|MSBA|CSPO|ACP|CIPM|ACMA|CGMA|MAFM|MIS|CISA|CRISC|CCDP|SE|SHRM-CP)\b/g, '')  // Remove certifications
                 .replace(/, +/g, '')  // Remove spaces after commas
                 .replace(/,$/g, '')  // Remove trailing commas
                 .replace(/^,/g, '')  // Remove leading commas
